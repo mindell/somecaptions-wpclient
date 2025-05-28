@@ -128,15 +128,6 @@ class ActDeact{
 	 */
 	private static function single_activate() {
 		self::upgrade_procedure();
-		
-		// Activate domain with SomeCaptions API
-		$form_params = array(
-			'site_name' => \get_bloginfo('name'),
-			'site_url'  => \site_url()
-		);
-		$ep = '/api/wpclient/online';
-		ApiClient::request($ep, $form_params);
-		
 		// Clear the permalinks
 		\flush_rewrite_rules();
 	}
