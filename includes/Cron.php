@@ -94,17 +94,13 @@ class Cron{
                             $author_user_id = $article->author->wp_user_id;
                         }
                     }
-                    $post_name = \sanitize_title( $article->title );
-                    if($article->post_name) {
-                        $post_name = \sanitize_title( $article->post_name );
-                    }
                     $post_arg = array(
                         'post_type'     => $article->type,
                         'post_status'   => 'publish',
                         'post_title'    => $article->title,
                         'post_category'	=> array( $article->domain_category->term_id ),
                         'post_content'  => $post_content,
-                        'post_name'     => $post_name,
+                        'post_name'     => \sanitize_title( $article->title ),
                         'post_author'   => $author_user_id,
                         'post_date'     => $article->publish_at,
                     );
